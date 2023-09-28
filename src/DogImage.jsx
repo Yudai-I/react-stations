@@ -1,7 +1,11 @@
 // @ts-check
+// @ts-ignore
+export const DogImage = (props) => {
+  return (
+  <img src= {props.imageUrl} />
+  );
+};
 
-export const DogImage = () => {
-  return <></>
-}
 
-export default DogImage
+
+ 
