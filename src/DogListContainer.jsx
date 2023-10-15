@@ -1,15 +1,14 @@
 // @ts-check
 import React from 'react';
-import { useEffect } from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { BreedsSelect } from './BreedsSelect'
+import { DogImage } from './DogImage';
 
 export const DogListContainer = () => {
   const [breeds, setbreeds] = useState([])
   const [selectedBreed, setSelectedBreed] = useState('');
-  const handleChange = e => {
-    setSelectedBreed(e.target.value);
-  };
+  const [images, setImages] = useState([]);
+  
   useEffect(() => {
     fetch('https://dog.ceo/api/breeds/list/all')
       .then(res => res.json())
@@ -17,7 +16,10 @@ export const DogListContainer = () => {
   }, []);
     
   return(
-    <BreedsSelect breeds={breeds} handleChange={handleChange} selectedBreeds={selectedBreed} />
+    <>
+    <BreedsSelect breeds={breeds} selectedBreeds={selectedBreed} setSelectedBreed={setSelectedBreed} />
+    <DogImage image={images} selectedBreeds={selectedBreed} />
+    </>
   )
 }
 

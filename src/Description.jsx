@@ -7,18 +7,17 @@ export const Description = () => {
 
   const click = () => { 
     fetch('https://dog.ceo/api/breeds/image/random')
-    .then(response => {
-      return response.json();
-    })
-    .then(data => {
-      setDogUrl(data.message);
-    });
+     .then(response => response.json())
+     .then(data => {
+       setDogUrl(data.message);
+     });
   };
+
   return (
     <>
       <p>犬の画像を表示するサイトです。</p>
-      <DogImage url={dogUrl} />
-      <button onClick={click}>ボタン</button>
+      <DogImage imageUrl={dogUrl} />
+      <button type="button" onClick={click}>ボタン</button>
       </>
   )
 }
